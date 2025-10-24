@@ -1,0 +1,327 @@
+:root{
+  --bg-main: #0b0b0c;
+  --bg-panel: linear-gradient(180deg,#0f0f10 0%, #161616 100%);
+  --card-bg: linear-gradient(180deg, #121212, #0f0f10);
+  --accent-yellow: #ffcc00;
+  --accent-yellow-2: #ffd84d;
+  --accent-dark: #1b1b1b;
+  --muted: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.02);
+  --final-blue: #cfeefc;
+  --final-blue-2: #6fc6f8;
+  --text-main: #f4f5f6;
+  --text-muted: #b6b9bd;
+  --border: rgba(255,255,255,0.04);
+  --shadow: 0 10px 30px rgba(0,0,0,0.65);
+  --radius: 12px;
+  --btn-gradient: linear-gradient(90deg, #ffd84d 0%, #ffb300 100%);
+
+  /* Image placeholders — set these to url(...) where you need backgrounds.
+     Example usage (in a separate small CSS file or inside a <style> block):
+       .point-table { --pointtable-bg: url("assets/images/point-bg.png"); }
+       .point-table.final-table { --final-bg: url("assets/images/final-bg.png"); }
+  */
+  --pointtable-bg: none;
+  --final-bg: none;
+}
+
+.hidden{
+  display: none;
+}
+
+/* ========== MODAL STYLES ========== */
+
+/* Overlay background (covers page when open) */
+.modal {
+  display: none;                 /* Hidden by default */
+  position: fixed;               /* Stay in same place */
+  z-index: 1000;                 /* On top of everything */
+  left: 0;
+  top: 0;
+  width: 100%;                   /* Full page width */
+  height: 100%;                  /* Full page height */
+  background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+  justify-content: center;       /* Center content horizontally */
+  align-items: center;           /* Center content vertically */
+}
+
+/* Show modal when class “hidden” is removed */
+.modal:not(.hidden) {
+  display: flex;
+}
+
+/* The popup box (white card) */
+.modal-content {
+  background: linear-gradient(135deg, #ffcc00, #000000); 
+  /* yellow → black diagonal gradient */
+  color: #000000;                        /* make text visible on dark background */
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  width: 850px;
+  position: relative;
+  animation: popupFade 0.25s ease-out;
+}
+
+
+/* Close button (top-right corner) */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #777;
+}
+.close:hover {
+  color: #000;
+}
+
+/* Smooth animation */
+@keyframes popupFade {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg-main);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--text-main);-webkit-font-smoothing:antialiased}
+
+/* Header */
+.ex-header{padding:16px 20px;background:linear-gradient(90deg,#0a0a0a,#121212);border-bottom:1px solid var(--border)}
+.logo-container{display:flex;align-items:center;gap:12px}
+.ex-logo{width:48px;height:48px;border-radius:10px;object-fit:cover;border:2px solid rgba(0,0,0,0.4)}
+.ex-title{font-weight:800;letter-spacing:1px;color:var(--accent-yellow)}
+
+/* Nav */
+nav{display:flex;gap:10px;align-items:center}
+.nav-btn{background:none;border:none;color:var(--accent-yellow);padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+.nav-btn:hover{background:rgba(255,204,0,0.08);color:#fff}
+
+/* Controls */
+.tournament-controls{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;margin:14px; background:var(--card-bg); border:1px solid var(--border); box-shadow:var(--shadow)}
+.styled-select,.styled-input,input[type="number"]{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);color:var(--text-main);padding:10px;border-radius:8px}
+
+/* Panels */
+.matches-panel{margin:14px;border-radius:14px;padding:14px;background:linear-gradient(180deg,#0e0e0e,#141414);box-shadow:var(--shadow);border:1px solid var(--border)}
+.matches-panel-header{display:flex;justify-content:space-between;align-items:center}
+.panel-subtitle{color:var(--accent-yellow);font-weight:800}
+
+/* Match cards */
+.matches-list-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.match-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:12px;border-radius:12px;border:1px solid var(--border);box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.match-card-title{font-weight:800;color:var(--accent-yellow)}
+.match-card-meta{font-size:0.85rem;color:var(--text-muted)}
+.match-card-top3{margin-top:8px;color:var(--text-muted);font-weight:600}
+.match-card-actions{display:flex;gap:8px;margin-top:10px}
+
+/* Buttons */
+.primary-btn{background:var(--btn-gradient);color:#111;padding:8px 12px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(255,176,0,0.12)}
+.primary-btn:hover{transform:translateY(-2px)}
+.danger-btn{background:transparent;color:#ff6b6b;border:1px solid rgba(255,107,107,0.12);padding:8px 10px;border-radius:8px;cursor:pointer}
+
+/* Point table wrapper */
+.point-table-wrapper{max-width:1080px;margin:18px auto;padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border:1px solid var(--border);box-shadow:var(--shadow)}
+
+/* Table base */
+.ex-table, .point-table{width:100%;border-collapse:collapse;font-size:0.98rem;table-layout:fixed;position:relative}
+.ex-table thead th, .point-table thead th{padding:12px 14px;text-transform:uppercase;font-weight:800;font-size:0.85rem;color:var(--text-muted);letter-spacing:1px;border-bottom:2px solid rgba(255,255,255,0.03);background:transparent}
+
+/* Column sizing via classes */
+.col-rank{width:6%;text-align:center}
+.col-team{width:56%;text-align:left;padding-left:12px}
+.col-wins,.col-kills,.col-point,.col-total{width:9%;text-align:center}
+
+/* Body rows */
+.ex-table tbody tr{transition:all .12s ease;border-radius:10px}
+.ex-table tbody td{padding:12px 14px;background:transparent;border-bottom:1px solid rgba(255,255,255,0.02);vertical-align:middle;color:var(--text-main)}
+
+/* team-cell (logo + name) */
+.team-cell{display:flex;align-items:center;gap:12px;white-space:nowrap;overflow:hidden}
+.team-cell .team-logo{width:36px;height:36px;border-radius:8px;object-fit:cover;border:2px solid rgba(0,0,0,0.4);flex:0 0 auto}
+.team-cell .team-no-logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(120deg,#222,#111);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-weight:800}
+.team-cell .team-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;color:var(--text-main)}
+
+/* Numeric cells */
+.numeric-cell{text-align:center;font-variant-numeric:tabular-nums;color:var(--text-main);font-weight:700}
+
+/* Hover effect */
+.ex-table tbody tr:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,0.6)}
+
+/* Neutral top-3 (non-final) - keep subtle emphasis only */
+.point-table tr.top1 td,
+.point-table tr.top2 td,
+.point-table tr.top3 td{font-weight:800}
+
+/* =========================
+   POINT TABLE BACKGROUND (uses pseudo-layer for background images so they render reliably)
+   ========================= */
+.point-table {
+  /* placeholder variable — set --pointtable-bg to url(...) where needed */
+  position: relative;
+  overflow: visible;
+}
+
+/* Background image layer inserted via ::before so it sits under table content */
+.point-table::before {
+  content: ("");
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.18; /* subtle, tweak as needed */
+  pointer-events: none;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* subtle overlay to keep text readable when a background is present */
+.point-table::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.06));
+  background-image: var(--pointtable-bg) ;
+  pointer-events: none;
+  border-radius: 10px;
+  z-index: 0;
+}
+/* ensure table cells appear above the background layers */
+.point-table thead, .point-table tbody, .point-table td { position: relative; z-index: 1; }
+
+/* =========================
+   FINALS THEME (distinct, attractive, esports feel)
+   - final table uses its own pseudo-layer background and light glow
+   ========================= */
+.point-table.final-table {
+  --_final_bg: var(--final-bg);
+  position: relative;
+  overflow: visible;
+}
+
+/* use ::before for final background (overrides regular before due to selector specificity) */
+.point-table.final-table::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:url('images/finals.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.26; /* slightly stronger for finals */
+  pointer-events: none;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* final overlay for tinting */
+.point-table.final-table::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(230,245,255,0.02), rgba(220,240,255,0.01));
+  pointer-events: none;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* Add a minimal glow ring behind the table to make finals pop.
+   If you want a slightly stronger glow for export, script can inject an element with .final-glow into the DOM before capturing. */
+.point-table.final-table .final-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 14px;
+  pointer-events: none;
+  box-shadow: 0 20px 60px rgba(80,170,230,0.08);
+  filter: blur(10px);
+  z-index: 0;
+  opacity: 0.95;
+}
+
+/* header tint for finals */
+.point-table.final-table thead th{
+  background: transparent;
+  color: #cbc672;
+  border-bottom: 2px solid rgba(60,160,210,0.18);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* Final top-3 big highlight blocks */
+.point-table.final-top1 td{
+  background:linear-gradient(90deg, rgba(115,200,255,0.24), rgba(65,170,235,0.08));
+  color:#021a20;font-weight:900;box-shadow:inset 0 -4px 0 rgba(0,0,0,0.06)
+}
+.point-table.final-top2 td{
+  background:linear-gradient(90deg, rgba(150,215,255,0.18), rgba(100,190,235,0.06));
+  color:#04222a;font-weight:800
+}
+.point-table.final-top3 td{
+  background:linear-gradient(90deg, rgba(180,230,255,0.14), rgba(140,210,235,0.04));
+  color:#cbc672;font-weight:800
+}
+
+/* Total column accent; keep consistent but change on finals */
+.point-table td.col-total, .point-table td:last-child{font-weight:900;color:var(--accent-yellow)}
+.point-table.final-table td.col-total, .point-table.final-table td:last-child{color:rgb(238, 149, 33);font-weight:900}
+
+/* =========================
+   Column separators (vertical dividers to mimic "pointable" look)
+   - Add subtle vertical lines between columns; stronger lines for finals (light-blue)
+   ========================= */
+/* Add a right border to all cells except the last one to create vertical separators.
+   Use a subtle low-contrast line so it feels like a board line. */
+.point-table thead th:not(:last-child),
+.point-table tbody td:not(:last-child) {
+  border-right: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Make separators more pronounced for finals with tinted color */
+.point-table.final-table thead th:not(:last-child),
+.point-table.final-table tbody td:not(:last-child) {
+  border-right: 1px solid rgba(223, 240, 68, 0.1);
+}
+
+/* Short vertical divider accent in the Team column (like in your reference)
+   we add a thin gold accent to emphasize separation between team cell and numeric cells */
+.point-table tbody td.team-cell + td,
+.point-table tbody td.team-cell + td ~ td { /* no-op for browsers without flex gap; keep structure */
+}
+
+/* For a small vertical accent between the Team column and the Wins column,
+   we create a pseudo-element on the Wins header & cells for a gold divider */
+.point-table thead th.col-wins,
+.point-table tbody td.col-wins {
+  position: relative;
+}
+.point-table thead th.col-wins::before,
+.point-table tbody td.col-wins::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 16%;
+  height: 68%;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255,216,77,0.85), rgba(255,180,0,0.85));
+  border-radius: 2px;
+  opacity: 0.85;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* For finals, make that divider a soft blue */
+.point-table.final-table thead th.col-wins::before,
+.point-table.final-table tbody td.col-wins::before {
+  background: linear-gradient(180deg, rgba(140,210,255,0.9), rgba(238, 252, 43, 0.9));
+}
+
+/* small responsive tweaks */
+@media (max-width:900px){
+  .col-team{width:58%}
+  .col-rank{width:8%}
+  .team-cell .team-logo{width:28px;height:28px}
+  .team-cell .team-name{font-size:0.95rem}
+  .point-table-wrapper{padding:12px}
+}

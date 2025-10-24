@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+    <meta charset="UTF-8" />
+     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>EX Tournament Point Table</title>
+       
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+</head>
+
+<body>
+      <header class="ex-header">
+            <div class="logo-container">
+                  <img src="assets/css/images/ex ka logo.jpg" alt="EX Esports Logo" class="ex-logo">
+                  <span class="ex-title">EX TOURNAMENT Point Table</span>
+                </div>
+            <nav>
+                  <a href="history.html" class="nav-btn">History</a>
+                  <button id="newMatchBtn" class="primary-btn nav-btn">+ New Match</button>
+                  <a href="mvp.html" class="nav-btn">MVP Cards</a>
+                </nav>
+
+
+
+          </header>
+
+      <div id="tournamentSection" class="tournament-controls">
+            <select id="tournamentSelect" class="styled-select"></select>
+            <button id="deleteTournamentBtn" class="danger-btn" title="Delete selected tournament">🗑️</button>
+            <button id="newTournamentBtn" class="primary-btn">+ New Tournament</button>
+          </div>
+
+        <section id="matchesPanel" class="matches-panel">
+            <div class="matches-panel-header">
+                  <div>
+                        <label for="createSeriesCount">Create series:</label>
+                        <input id="createSeriesCount" type="number" min="1" max="24" value="3"
+                    class="styled-input series-input">
+                        <button id="createSeriesBtn" class="primary-btn">Create Series</button>
+                      </div>
+                  <div class="panel-subtitle">Matches in tournament</div>
+                </div>
+
+            <div id="matchesListContainer" class="matches-list-container">
+                      </div>
+          </section>
+
+      <main>
+            <section id="matchSection">
+                  <h2 class="section-title">Current Match: <span id="currentMatchName" class="match-name-accent">Not
+                    Started</span></h2>
+                 
+                        <div id="teamsTableContainer" class="point-table-wrapper"></div>
+                 
+                  <div class="match-actions">
+                        <button id="saveMatchBtn" class="primary-btn hidden-action">Save Match</button>
+                        <button id="exportMatchBtn" class="primary-btn hidden-action">Export Match Image</button>
+                      </div>
+                </section>
+          </main>
+
+     
+    <script src="assets/css/js/script.js"></script>
+</body>
+
+</html>

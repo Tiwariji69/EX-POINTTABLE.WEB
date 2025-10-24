@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       
+    <meta charset="UTF-8">
+        <title>EX Tournament MVP Cards</title>
+       
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           
+    <link rel="stylesheet" href="assets/css/mvp_stylesheet.css">
+</head>
+
+<body>
+        <header class="ex-header">
+                <div class="logo-container">
+                        <img src="assets/css/images/ex ka logo.jpg" alt="EX Esports Logo" class="ex-logo">
+                        <span class="ex-title">EX TOURNAMENT - MVP Cards</span>
+                    </div>
+                <nav>
+                        <a href="index.html" class="nav-btn">Back to Point Table</a>
+                    </nav>
+            </header>
+        <main class="mvp-main">
+               <section id="mvpSection">
+                <h2>Tournament MVPs </h2>
+                <div id="mvpCardsContainer" class="card-list-container">
+                        </div>
+
+                <h2>Custom Cards </h2>
+                <form id="customCardForm" class="custom-card-form">
+                        <input type="text" id="customTeamName" placeholder="Team Name" required class="styled-input">
+                        <input type="file" id="customTeamLogo" accept="image/*" class="styled-input">
+                        <input type="text" id="customTitle" placeholder="Custom Title (e.g., Highest Kills)" required
+                    class="styled-input">
+                        <input type="text" id="customStat" placeholder="Custom Stat Value (e.g., 50 Kills)" required
+                    class="styled-input">
+                        <button type="submit" class="primary-btn">Create Custom Card</button>
+                    </form>
+                <div id="customCardsContainer" class="card-list-container">
+                        </div>
+                <button id="exportAllBtn" class="primary-btn export-all-btn">Export All Cards as PNG</button>
+        </section>
+    </main>  
+    <script src="assets/css/js/mvp.js"></script>
+</body>
+
+</html>
